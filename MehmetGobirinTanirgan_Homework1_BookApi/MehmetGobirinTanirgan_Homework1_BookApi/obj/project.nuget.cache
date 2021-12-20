@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "h4yZsyiWoKiRKAteiTrI8Kp2aaKeOAWprwsSZzJsa3ovHpQM6WRmdG0+jarj6oC/vzZPjreTWqrXFnkcQQ+MPA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\MGT\\Desktop\\first-homework-MehmetGobirinTanirgan\\MehmetGobirinTanirgan_Homework1_BookApi\\MehmetGobirinTanirgan_Homework1_BookApi\\MehmetGobirinTanirgan_Homework1_BookApi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MGT\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\MGT\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\MGT\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\MGT\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\MGT\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\MGT\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
