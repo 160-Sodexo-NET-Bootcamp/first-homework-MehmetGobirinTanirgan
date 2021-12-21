@@ -1,4 +1,5 @@
-﻿using MehmetGobirinTanirgan_Homework1_BookApi.Models;
+﻿using MehmetGobirinTanirgan_Homework1_BookApi.FakeDb;
+using MehmetGobirinTanirgan_Homework1_BookApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,14 @@ namespace MehmetGobirinTanirgan_Homework1_BookApi.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        private List<Book> bookList;
+        private static List<Book> bookList;
         public BookController()
         {
-            bookList = new()
-            {
-                new Book(1, "A Thousand Splendid Suns", "Khaled Hosseini", "1-634-28-34", 35),
-                new Book(2, "Dune", "Frank Herbert", "2-334-57-08", 44.50),
-                new Book(3, "War and Peace", "Leo Tolstoy", "3-224-33-99", 30),
-                new Book(4, "Crime and Punishment", "Fyodor Dostoevsky", "2-021-03-67", 29.50),
-                new Book(5, "The Lord of the Rings", "J.R.R. Tolkien", "8-386-48-44", 28),
-                new Book(6, "The Kite Runner", "Khaled Hosseini", "3-765-21-87", 29.50),
-            };
+            bookList = BookTable.bookList;// Bir db üzerinde çalışıyormuş gibi hissettirmek için static class içerisine list
+                                          // oluşturuldu.
         }
 
-        [HttpPost("GetAll")]
+        [HttpPost("GetAll")]//Aynı anda her iki post'u çalıştırmak için route path'ini değiştirdim.
         public IActionResult GetBooks()
         {
             if (bookList is null)
@@ -91,9 +85,9 @@ namespace MehmetGobirinTanirgan_Homework1_BookApi.Controllers
                 return BadRequest(new { Message = "Id is not valid" });
             }
 
-            var isExist = bookList.Any(x => x.Id == reqBook.Id || (x.Name == reqBook.Name && x.Author == reqBook.Author)
+            var doesExist = bookList.Any(x => x.Id == reqBook.Id || (x.Name == reqBook.Name && x.Author == reqBook.Author)
             || x.SerialNumber == reqBook.SerialNumber); // Girilen kaydın mevcut olup olmadığını kontrol etmek için.
-            if (isExist)
+            if (doesExist)
             {
                 return BadRequest(new { Message = "Possible duplicate. Check your model" });
             }
@@ -122,10 +116,12 @@ namespace MehmetGobirinTanirgan_Homework1_BookApi.Controllers
                 return NotFound(new { Message = "Book doesn't exist" });
             }
 
-            book.Name = reqBook.Name;
-            book.Author = reqBook.Author;
-            book.SerialNumber = reqBook.SerialNumber;
-            book.Price = reqBook.Price;
+            // Burada default değer gelmesi durumunda, yani kullanıcının değiştirmediği özelliklerin
+            // eski değerini koruması amaçlandı.
+            book.Name = reqBook.Name != "string" ? reqBook.Name : book.Name;
+            book.Author = reqBook.Author != "string" ? reqBook.Author : book.Author;
+            book.SerialNumber = reqBook.SerialNumber != "string" ? reqBook.SerialNumber : book.SerialNumber;
+            book.Price = reqBook.Price != default ? reqBook.Price : book.Price;
 
             return Ok(new { Message = "Successfully updated", Object = bookList });
         }
