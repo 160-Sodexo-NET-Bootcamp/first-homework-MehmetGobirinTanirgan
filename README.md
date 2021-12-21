@@ -1,18 +1,66 @@
-# Birinci hafta ödevi teslim tarihi 24 Aralık Saat 23:00
+# Sodexo .NET Bootcamp First Homework
 
-firsthomework!
+### Details
+- Deadline: 24 Dec, 23:00
+- Steps to follow:
+    
+    - Creating a new .NET Core WEB API project.
+    - Every content about the project should be named like "NameSurname_Homework1_ProjectName".
+    - Creating a controller named 'BookController'.
+    - Creating a Book class by adding 5 properties such as Id, BookSerialNumber, BookName, Author etc.
+    - Creating a list and adding 6 records randomly.
+    - List all records with HttpPost request.
+    - Using FromRoute and FromQuery with HttpGet to show details of id entered with 2 different url.
+    - Adding a new record into list using HttpPost with FromBody.
+    - Update existing record with HttpPut.
+    - Delete a record from list with HttpDelete.
+    - You can code the areas that are not specified in the methods however you want.
 
-Adimlar: 
-1. Dotnet Core Web Api Projesi Olustulmali 
-2. Projeye ait tum icerikler IsimSoyisim_Odev1_projeadi olarak teslim edilmeli.  
-3. BookController isminde bir controller olusturmak  
-4. Id,KitapSeriNo, KitapAdi,Yazari vs 5 adet property ekleyerek class olusturmak  
-5.  Bir  Liste olusturup rastgele 6 kayit eklemek.  
-6. HttpPost ile tum kayitlari listeleme 
-7. HttpGet ile FromRoute ve FromQuery kullanarak 2 farkli api ile girilen id nin detaylarini gostermek 
-8. HttpPost ile FromBody kullanarak listeye yeni bir kayit eklemek  
-9. HttpPut ile mevcut kaydi guncellemek  
-10. HttpDelete ile listeden kayit silmek  
-11. Bahsi gecen metolarda belirtilmemis yerleri istediginiz gibi kodlayabilirsiniz.
 
+### Actions
 
+##### POST - List all book records
+
+<pre>https://localhost:44306/api/Books/GetAll</pre>
+
+##### GET - Get a book record by id from route
+
+<pre>https://localhost:44306/api/Books/<strong>{id}</strong></pre>
+
+##### GET - Get a book record by id from query
+
+<pre>https://localhost:44306/api/Books<strong>?id={id}</strong></pre>
+
+##### POST - Create a new book record
+
+<pre>https://localhost:44306/api/Books
+
+<b>Request Body:</b>
+
+{
+  "id": {id},
+  "name": {bookName},
+  "author": {author},
+  "serialNumber": {serialNumber},
+  "price": {price}
+}
+</pre>
+
+##### PUT - Update a book record
+
+<pre>https://localhost:44306/api/Books
+
+<b>Request Body:</b>
+
+{
+  "id": {id},
+  "name": {bookName},
+  "author": {author},
+  "serialNumber": {serialNumber},
+  "price": {price}
+}
+</pre>
+
+##### DEL - Delete a book record
+
+<pre>https://localhost:44306/api/Books/<strong>{id}</strong></pre>
