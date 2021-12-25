@@ -127,7 +127,7 @@ namespace MehmetGobirinTanirgan_Homework1_BookApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteBook(int id)
+        public IActionResult DeleteBook([FromRoute] int id)
         {
             if (id <= 0)
             {
